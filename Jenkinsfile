@@ -5,7 +5,9 @@ node {
 
 	stage('Read file'){
 		def newTopologyCreation = readJSON file: './infraTopology.json'
-		println newTopologyCreation
+		println ("Topology to create: $newTopologyCreation")
+		def networkName = newTopologyCreation["Network"]["name"]
+		println ("Network name: $networkName")
 	}
 	
 }
