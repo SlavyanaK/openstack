@@ -22,6 +22,8 @@ node {
 		mapTopology.each { name, value ->
 			println "Topology: $name - $value"
 		}
+
+		println mapTopology.networkName
 	}
 	
 }
