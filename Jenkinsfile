@@ -19,9 +19,9 @@ node {
 						'serverSecurityGroup': "${newTopologyCreation["Server"]["security-group"]}",
 						'serverKeyName': "${newTopologyCreation["Server"]["key-name"]}",
 						'serverAvailabilityZone': "${newTopologyCreation["Server"]["availability-zone"]}"]
-		/*mapTopology.each { name, value ->
+		mapTopology.each { name, value ->
 			println "Topology: $name - $value"
-		}*/
+		}
 		println mapTopology.networkName
 	}
 	
