@@ -1,0 +1,48 @@
+heat_template_version: 2015-10-15
+
+description: Simple template for demoInfra
+
+resources:
+  os-network-1:
+    type: OS::Neutron::Net
+    properties:
+      name: os-network-1
+  os-subnet-1:
+    type: OS::Neutron::Subnet
+    properties:
+      name: os-subnet-1
+      cidr: 192.168.0.0/24
+      network_id: { get_resource: os-network-1 }
+  os-router-1:
+    type: OS::Neutron::Router
+    properties:
+      name: os-router-1
+      external_gateway_info: 
+        network: external2
+  os-router-interface-1:
+    type: OS::Neutron::RouterInterface
+    properties:
+      router_id: { get_resource: os-router-1 }
+      subnet_id : { get_resource: os-subnet-1 }
+  os-server-1:
+    type: OS::Nova::Server
+    properties:
+      name: os-server-1
+      admin_pass: admin
+      admin_user: skokorina
+      availability_zone: nova
+      flavor: m1.small
+      image: Centos-7-TAM
+      key_name: skokorina
+      networks:
+      - network: { get_resource: os-network-1 }
+      security_groups: [ default ]
+  os-floatingip-server-1:
+    type: OS::Neutron::FloatingIP
+    properties:
+      floating_network_id: external2
+  os-floatingip-association:
+    type: OS::Nova::FloatingIPAssociation
+    properties: 
+      floating_ip: { get_resource: os-floatingip-server-1 }
+      server_id:  { get_resource: os-server-1 }
