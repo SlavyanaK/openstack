@@ -7,7 +7,7 @@ node {
 
 	stage('Read file'){
 		def topologyToCreate = readYaml file: "./template-stack-creation.yml"
-		println topologyToCreate
+		println topologyToCreate['ressources']['os-network-1']['type']
 	}
 	
 }
