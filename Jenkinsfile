@@ -3,10 +3,10 @@ node {
 
 	stage('Read file'){
 		def readTopology = readYaml file: "./template-stack-creation.yml"
-		echo "Topology to create: $readTopology"
+		//echo "Topology to create: $readTopology"
 
 		readTopology.resources[0].each{
-			println it
+			println "PRINT $it"
 		}
 
 	}
