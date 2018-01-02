@@ -6,7 +6,7 @@ node {
 		//echo "Topology to create: $readTopology"
 
 		readTopology.resources.each{
-			println "PRINT ${it[0]}"
+			println "PRINT $it"
 		}
 
 	}
