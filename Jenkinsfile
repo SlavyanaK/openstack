@@ -5,7 +5,7 @@ node {
 		def readTopology = readYaml file: "./template-stack-creation.yml"
 		//echo "Topology to create: $readTopology"
 
-		readTopology.resources.name.each{
+		readTopology.resources.properties.name.each{
 			println "PRINT $it"
 		}
 
