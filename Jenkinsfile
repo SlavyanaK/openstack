@@ -4,7 +4,7 @@ node {
 
 	stage('Read file'){
 		sh "ls -l"
-		sh "cat logs.txt" >> $test
+		sh "cat logs.txt >> $test"
 		println test
 	}
 }
