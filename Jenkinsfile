@@ -1,11 +1,7 @@
 node {
 	checkout scm
-	
+	def config
 
-	stage('Read file'){
-		sh "ls -l"
-		sh "cat logs.txt >> output"
-		def read = readFile 'output'
-		println read
-	}
+	 config = readProperties file:"config.ini"
+	 println config
 }
