@@ -1,10 +1,11 @@
 node {
 	checkout scm
-	def test = ""
+	
 
 	stage('Read file'){
 		sh "ls -l"
-		sh "cat logs.txt >> $test"
-		println test
+		sh "cat logs.txt >> output"
+		def read = readFile 'output'
+		println read
 	}
 }
