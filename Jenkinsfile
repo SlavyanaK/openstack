@@ -4,4 +4,5 @@ node {
 
 	 config = readProperties file:"config.ini"
 	 println config
+	 println config.name
 }
