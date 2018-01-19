@@ -1,4 +1,4 @@
-node {
+node {//test
 	checkout scm
 	def config
 
